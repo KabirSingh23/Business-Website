@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bloom & Bean</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     * {
       margin: 0;
@@ -14,68 +13,96 @@
     }
     body {
       font-family: 'Quicksand', sans-serif;
-      background-color: #f6f6f6;
+      background: #fefefe;
       color: #333;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
-    header {
-      background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') no-repeat center center/cover;
-      height: 90vh;
-      color: white;
+    .parallax {
+      background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93');
+      height: 100vh;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      color: white;
       text-align: center;
-      animation: fadeIn 2s ease-in-out;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    header h1 {
+    .parallax h1 {
       font-size: 4rem;
       background-color: rgba(0,0,0,0.5);
       padding: 1rem 2rem;
       border-radius: 10px;
-      animation: slideDown 1.5s ease-in-out;
     }
-    header p {
-      font-size: 1.5rem;
+    .parallax p {
       margin-top: 1rem;
-      background-color: rgba(0,0,0,0.4);
+      font-size: 1.4rem;
+      background-color: rgba(0,0,0,0.3);
       padding: 0.5rem 1rem;
       border-radius: 8px;
     }
     nav {
+      background-color: white;
       display: flex;
       justify-content: center;
-      background-color: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
     nav a {
-      padding: 1rem;
       margin: 0 1rem;
-      color: #333;
       text-decoration: none;
+      color: #333;
       font-weight: 600;
-      transition: color 0.3s;
     }
     nav a:hover {
       color: #3c9;
     }
     section {
-      padding: 5rem 2rem;
-      max-width: 1100px;
+      padding: 4rem 2rem;
+      max-width: 1200px;
       margin: auto;
     }
-    h2 {
+    section h2 {
       font-size: 2.5rem;
-      margin-bottom: 1.5rem;
       text-align: center;
+      margin-bottom: 2rem;
+    }
+    .feature-menu {
+      display: flex;
+      overflow-x: auto;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      scroll-snap-type: x mandatory;
+    }
+    .feature-menu::-webkit-scrollbar {
+      display: none;
+    }
+    .menu-item {
+      min-width: 250px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      scroll-snap-align: start;
+    }
+    .menu-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .menu-item .info {
+      padding: 1rem;
+    }
+    .menu-item .info h4 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
     }
     .gallery {
       display: grid;
@@ -84,46 +111,42 @@
     }
     .gallery img {
       width: 100%;
-      border-radius: 10px;
       height: 220px;
       object-fit: cover;
+      border-radius: 12px;
       transition: transform 0.3s ease;
     }
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
+    }
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
     .testimonial {
-      background-color: #fff;
+      background: #fff;
       padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-      transition: all 0.3s ease;
-    }
-    .testimonial:hover {
-      transform: translateY(-5px);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      font-style: italic;
     }
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      margin-bottom: 1rem;
       padding: 1rem;
+      margin-bottom: 1rem;
       border: 1px solid #ccc;
       border-radius: 8px;
-      font-family: inherit;
     }
     .contact-form button {
-      padding: 0.75rem 2rem;
+      padding: 0.8rem 2rem;
       background-color: #3c9;
       color: white;
       border: none;
       border-radius: 8px;
-      font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s;
-    }
-    .contact-form button:hover {
-      background-color: #35b;
+      font-weight: bold;
     }
     footer {
       text-align: center;
@@ -134,63 +157,69 @@
   </style>
 </head>
 <body>
-  <header>
+
+  <div class="parallax">
     <h1>Bloom & Bean</h1>
     <p>Sip. Breathe. Bloom.</p>
-  </header>
+  </div>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#menu">Menu & Plants</a>
+    <a href="#menu">Menu</a>
     <a href="#gallery">Gallery</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>Located in the heart of Lodhi Colony, Bloom & Bean is a boutique café and plant shop founded by Rhea Kapoor in 2022. More than just a place for coffee, it's a living sanctuary — offering a serene environment where guests can relax, work, or reconnect with nature over a cup of beautifully brewed coffee.</p>
-    <p>Every corner is designed with love — combining rustic elements with lush greenery to create a unique biophilic experience. Whether you're a freelancer needing a creative space or a plant lover browsing our curated collection, Bloom & Bean welcomes you with warm aromas and even warmer hearts.</p>
-  </section>
-
   <section id="menu">
-    <h2>Menu & Plants</h2>
-    <p><strong>Coffee Menu:</strong></p>
-    <ul>
-      <li>Lavender Latte</li>
-      <li>Cold Brew Spritz</li>
-      <li>Spiced Mocha</li>
-      <li>Vanilla Chai</li>
-      <li>Matcha Lemonade</li>
-    </ul>
-    <p><strong>Our Plant Picks:</strong></p>
-    <ul>
-      <li>Snake Plant – air-purifying and low-maintenance</li>
-      <li>Pothos – elegant trails for any space</li>
-      <li>Mini Cactus – small, cute, and stress-free</li>
-      <li>ZZ Plant – lush and hard to kill</li>
-    </ul>
+    <h2>Featured Items</h2>
+    <div class="feature-menu">
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Lavender Latte">
+        <div class="info">
+          <h4>Lavender Latte</h4>
+          <p>Floral, smooth, and calming blend.</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Cold Brew Spritz">
+        <div class="info">
+          <h4>Cold Brew Spritz</h4>
+          <p>Bold brew with citrus notes.</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" alt="Spiced Mocha">
+        <div class="info">
+          <h4>Spiced Mocha</h4>
+          <p>Rich cocoa meets subtle spice.</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1548943487-a2e4d3b36621" alt="Matcha Lemonade">
+        <div class="info">
+          <h4>Matcha Lemonade</h4>
+          <p>Refreshing twist with antioxidants.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="gallery" class="gallery">
-    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Cozy café interior with wooden tables and chairs">
-    <img src="https://images.unsplash.com/photo-1560347876-aeef00ee58a1" alt="Indoor plants arranged on shelves">
-    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Modern café counter with pastries and coffee machine">
-    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Potted plants on a wooden table near window">
-    <img src="https://images.unsplash.com/photo-1542838687-bc1b47f3f9f6" alt="Café interior with hanging plants and cozy lighting">
-    <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9" alt="Table with laptop, coffee, and plant décor">
+  <section id="gallery">
+    <h2>Our Space</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Cozy café interior">
+      <img src="https://images.unsplash.com/photo-1560347876-aeef00ee58a1" alt="Plant shelf">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Table with coffee">
+      <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9" alt="Coffee and laptop">
+      <img src="https://images.unsplash.com/photo-1542838687-bc1b47f3f9f6" alt="Cafe view">
+    </div>
   </section>
 
   <section id="testimonials">
-    <h2>Testimonials</h2>
-    <div class="testimonial">
-      <p>“This place is my sanctuary! Amazing coffee and the plants? Gorgeous.” — Ananya M.</p>
-    </div>
-    <div class="testimonial">
-      <p>“Found my favorite cold brew and a snake plant in one visit. Love it here!” — Rajiv K.</p>
-    </div>
-    <div class="testimonial">
-      <p>“Aesthetic overload. Calm vibes, friendly people, and surprisingly productive work sessions.” — Tanya R.</p>
+    <h2>Customer Love</h2>
+    <div class="testimonials">
+      <div class="testimonial">“Best coffee and calmest corner in Delhi. Plant shopping is a bonus!”</div>
+      <div class="testimonial">“The atmosphere makes me want to create. 10/10 coffee and aesthetics.”</div>
     </div>
   </section>
 
@@ -205,8 +234,10 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 Bloom & Bean. Built with ❤️ by Kabir Singh.</p>
+    <p>&copy; 2025 Bloom & Bean. Crafted with ☕ + 🌿 by Kabir Singh.</p>
   </footer>
+
 </body>
 </html>
+
 
