@@ -11,6 +11,7 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Quicksand', sans-serif;
       background: #fefefe;
@@ -18,6 +19,8 @@
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
+
+    /* Hero / Parallax */
     .parallax {
       background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93');
       height: 100vh;
@@ -29,86 +32,103 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: white;
       text-align: center;
+      color: white;
     }
+
     .parallax h1 {
       font-size: 4rem;
-      background-color: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.6);
       padding: 1rem 2rem;
       border-radius: 10px;
     }
+
     .parallax p {
       margin-top: 1rem;
-      font-size: 1.4rem;
-      background-color: rgba(0,0,0,0.3);
+      font-size: 1.3rem;
+      background: rgba(0,0,0,0.4);
       padding: 0.5rem 1rem;
       border-radius: 8px;
     }
+
+    /* Navbar */
     nav {
       background-color: white;
       display: flex;
       justify-content: center;
       padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
-      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 999;
     }
+
     nav a {
       margin: 0 1rem;
       text-decoration: none;
       color: #333;
       font-weight: 600;
     }
+
     nav a:hover {
       color: #3c9;
     }
+
     section {
       padding: 4rem 2rem;
       max-width: 1200px;
       margin: auto;
     }
+
     section h2 {
-      font-size: 2.5rem;
       text-align: center;
+      font-size: 2.5rem;
       margin-bottom: 2rem;
     }
+
+    /* Featured Menu */
     .feature-menu {
       display: flex;
       overflow-x: auto;
       gap: 1.5rem;
-      padding: 1rem 0;
       scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
     }
+
     .feature-menu::-webkit-scrollbar {
       display: none;
     }
+
     .menu-item {
       min-width: 250px;
-      background-color: #fff;
+      background: #fff;
       border-radius: 15px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      overflow: hidden;
       scroll-snap-align: start;
+      overflow: hidden;
     }
+
     .menu-item img {
       width: 100%;
       height: 180px;
       object-fit: cover;
     }
+
     .menu-item .info {
       padding: 1rem;
     }
+
     .menu-item .info h4 {
       margin-bottom: 0.5rem;
       font-size: 1.1rem;
     }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
     }
+
     .gallery img {
       width: 100%;
       height: 220px;
@@ -116,14 +136,17 @@
       border-radius: 12px;
       transition: transform 0.3s ease;
     }
+
     .gallery img:hover {
       transform: scale(1.03);
     }
+
     .testimonials {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
+
     .testimonial {
       background: #fff;
       padding: 2rem;
@@ -131,6 +154,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       font-style: italic;
     }
+
     .contact-form input,
     .contact-form textarea {
       width: 100%;
@@ -139,20 +163,21 @@
       border: 1px solid #ccc;
       border-radius: 8px;
     }
+
     .contact-form button {
       padding: 0.8rem 2rem;
-      background-color: #3c9;
+      background: #3c9;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
     }
+
     footer {
       text-align: center;
       padding: 2rem;
       background-color: #eee;
-      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -171,31 +196,31 @@
   </nav>
 
   <section id="menu">
-    <h2>Featured Items</h2>
+    <h2>Featured Menu</h2>
     <div class="feature-menu">
       <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Lavender Latte">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Lavender Latte" />
         <div class="info">
           <h4>Lavender Latte</h4>
           <p>Floral, smooth, and calming blend.</p>
         </div>
       </div>
       <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Cold Brew Spritz">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Cold Brew Spritz" />
         <div class="info">
           <h4>Cold Brew Spritz</h4>
           <p>Bold brew with citrus notes.</p>
         </div>
       </div>
       <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" alt="Spiced Mocha">
+        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" alt="Spiced Mocha" />
         <div class="info">
           <h4>Spiced Mocha</h4>
           <p>Rich cocoa meets subtle spice.</p>
         </div>
       </div>
       <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1548943487-a2e4d3b36621" alt="Matcha Lemonade">
+        <img src="https://images.unsplash.com/photo-1548943487-a2e4d3b36621" alt="Matcha Lemonade" />
         <div class="info">
           <h4>Matcha Lemonade</h4>
           <p>Refreshing twist with antioxidants.</p>
@@ -207,11 +232,11 @@
   <section id="gallery">
     <h2>Our Space</h2>
     <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Cozy café interior">
-      <img src="https://images.unsplash.com/photo-1560347876-aeef00ee58a1" alt="Plant shelf">
-      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Table with coffee">
-      <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9" alt="Coffee and laptop">
-      <img src="https://images.unsplash.com/photo-1542838687-bc1b47f3f9f6" alt="Cafe view">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Café interior" />
+      <img src="https://images.unsplash.com/photo-1560347876-aeef00ee58a1" alt="Plant shelf" />
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Coffee table" />
+      <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9" alt="Laptop & Coffee" />
+      <img src="https://images.unsplash.com/photo-1542838687-bc1b47f3f9f6" alt="Cafe view" />
     </div>
   </section>
 
@@ -226,8 +251,8 @@
   <section id="contact">
     <h2>Contact Us</h2>
     <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
       <textarea rows="4" placeholder="Your Message"></textarea>
       <button type="submit">Send</button>
     </form>
