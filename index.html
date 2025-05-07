@@ -3,71 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Karigar & Co. | Handcrafted in Delhi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Bloom & Bean</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #8C4C33;
-      --accent: #EAC086;
-      --bg: #FAF7F2;
-      --text: #2d2d2d;
+      --primary: #3c9;
+      --bg: #fefefe;
+      --text: #333;
+      --accent: #ffe9ec;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Quicksand', sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     header {
-      background: url('https://images.unsplash.com/photo-1611309454929-b73e775bc5d0') no-repeat center center/cover;
-      height: 80vh;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') no-repeat center center/cover;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: white;
       text-align: center;
+      color: white;
+      position: relative;
     }
 
     header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      background: rgba(0, 0, 0, 0.5);
+      font-size: 4rem;
+      background: rgba(0,0,0,0.6);
       padding: 1rem 2rem;
       border-radius: 10px;
     }
 
     header p {
-      font-size: 1.2rem;
-      background: rgba(0, 0, 0, 0.4);
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      background: rgba(0,0,0,0.4);
       padding: 0.5rem 1rem;
       border-radius: 8px;
-      margin-top: 1rem;
     }
 
     nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-      background: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
+      background: white;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
       z-index: 1000;
     }
 
     nav a {
+      margin: 0 1.2rem;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
       color: var(--text);
     }
 
@@ -76,49 +73,92 @@
     }
 
     section {
-      padding: 3rem 2rem;
-      max-width: 1100px;
+      padding: 4rem 2rem;
+      max-width: 1200px;
       margin: auto;
     }
 
     h2 {
       text-align: center;
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 2rem;
-      font-family: 'Playfair Display', serif;
     }
 
-    .grid {
-      display: grid;
+    .feature-menu {
+      display: flex;
+      overflow-x: auto;
       gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
     }
 
-    .card {
+    .feature-menu::-webkit-scrollbar { height: 6px; }
+    .feature-menu::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+
+    .menu-item {
+      min-width: 280px;
       background: white;
-      border-radius: 10px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
+      scroll-snap-align: start;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img {
+    .menu-item img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
 
-    .card .info {
+    .info {
       padding: 1rem;
     }
 
-    .card .info h4 {
+    .info h4 {
+      font-size: 1.2rem;
       margin-bottom: 0.5rem;
-      font-size: 1.1rem;
+    }
+
+    .info p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .testimonials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .testimonial {
+      flex: 1 1 300px;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      font-style: italic;
     }
 
     .contact-form {
@@ -133,23 +173,23 @@
       padding: 1rem;
       border: 1px solid #ccc;
       border-radius: 8px;
-      width: 100%;
+      font-size: 1rem;
     }
 
     .contact-form button {
       background: var(--primary);
       color: white;
+      padding: 1rem 2rem;
       border: none;
-      padding: 1rem;
       border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
     }
 
     footer {
+      background: #eee;
       text-align: center;
       padding: 2rem;
-      background: #eee;
       font-size: 0.9rem;
     }
   </style>
@@ -157,67 +197,83 @@
 <body>
 
 <header>
-  <h1>Karigar & Co.</h1>
-  <p>Artisan Goods from the Heart of Delhi</p>
+  <h1>Bloom & Bean</h1>
+  <p>Sip. Breathe. Bloom.</p>
 </header>
 
 <nav>
-  <a href="#about">About</a>
-  <a href="#shop">Shop</a>
+  <a href="#menu">Menu</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#testimonials">Testimonials</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<section id="about">
-  <h2>Our Story</h2>
-  <p style="text-align: center;">Karigar & Co. is a boutique store in Shahpur Jat, Delhi, celebrating Indian craftsmanship through handmade goods — from candles to ceramics, each piece reflects tradition reimagined.</p>
-</section>
-
-<section id="shop">
-  <h2>Shop Our Collection</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1606297268387-341f4c02c6c7" alt="Soy Candle">
+<section id="menu">
+  <h2>Featured Menu</h2>
+  <div class="feature-menu">
+    <div class="menu-item">
+      <img src="https://images.unsplash.com/photo-1585076815064-7b144b9e5c1f" alt="Lavender Latte">
       <div class="info">
-        <h4>Soy Wax Candle</h4>
-        <p>Hand-poured with natural oils. Subtle lavender scent.</p>
+        <h4>Lavender Latte</h4>
+        <p>Floral, calming, and smooth with hints of vanilla and espresso.</p>
       </div>
     </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1603252110481-51d3c6fa3be6" alt="Scarf">
+    <div class="menu-item">
+      <img src="https://images.unsplash.com/photo-1581404917879-2c9e7c0af545" alt="Cold Brew Spritz">
       <div class="info">
-        <h4>Block Print Scarf</h4>
-        <p>Hand-printed cotton scarf with earthy tones and floral motifs.</p>
+        <h4>Cold Brew Spritz</h4>
+        <p>Bold cold brew topped with citrus fizz — the perfect summer drink.</p>
       </div>
     </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1601027836277-b86bb3a10b62" alt="Ceramic Plate">
+    <div class="menu-item">
+      <img src="https://images.unsplash.com/photo-1605478031307-4b6a4a74f6cc" alt="Spiced Mocha">
       <div class="info">
-        <h4>Ceramic Plate Set</h4>
-        <p>Crafted on the potter’s wheel. Microwave & dishwasher safe.</p>
+        <h4>Spiced Mocha</h4>
+        <p>Dark chocolate, espresso, and cinnamon blended into one warm hug.</p>
       </div>
     </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1616627986634-dc3d6e84bdb3" alt="Journal">
+    <div class="menu-item">
+      <img src="https://images.unsplash.com/photo-1559563458-527698bf5295" alt="Matcha Lemonade">
       <div class="info">
-        <h4>Handwoven Journal</h4>
-        <p>Khadi-bound with recycled paper. Great for notes or gifting.</p>
+        <h4>Matcha Lemonade</h4>
+        <p>Refreshing and zesty with earthy matcha and fresh lemon punch.</p>
       </div>
     </div>
   </div>
 </section>
 
+<section id="gallery">
+  <h2>Our Space</h2>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754" alt="Cafe Interior">
+    <img src="https://images.unsplash.com/photo-1536520002442-d2c523d7cd15" alt="Coffee Bar">
+    <img src="https://images.unsplash.com/photo-1505826759031-7748f6f9f3f4" alt="Coffee and Plants">
+    <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9" alt="Work Desk in Cafe">
+    <img src="https://images.unsplash.com/photo-1548943487-a2e4d3b36621" alt="Drinks and Journal">
+  </div>
+</section>
+
+<section id="testimonials">
+  <h2>Customer Love</h2>
+  <div class="testimonials">
+    <div class="testimonial">“The lavender latte is a dream. It’s my go-to writing spot now!”</div>
+    <div class="testimonial">“Perfect café vibes, kind staff, and the greenery is a breath of fresh air.”</div>
+    <div class="testimonial">“A quiet paradise tucked in Lodhi Colony. I love this place!”</div>
+  </div>
+</section>
+
 <section id="contact">
-  <h2>Get in Touch</h2>
+  <h2>Let's Connect</h2>
   <form class="contact-form">
     <input type="text" placeholder="Your Name" required />
     <input type="email" placeholder="Your Email" required />
     <textarea rows="5" placeholder="Your Message"></textarea>
-    <button type="submit">Send Message</button>
+    <button type="submit">Send</button>
   </form>
 </section>
 
 <footer>
-  <p>&copy; 2025 Karigar & Co. | Made with ❤️ in Delhi NCR</p>
+  <p>&copy; 2025 Bloom & Bean. Designed with ☕ + 🌿 by Kabir Singh.</p>
 </footer>
 
 </body>
